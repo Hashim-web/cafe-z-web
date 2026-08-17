@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Cafe-Z</title>
+</head>
+<body>
+    <h1>✨ Welcome to Cafe-Z ✨</h1>
+
+    {% for category, items in menu.items() %}
+        <h2>{{ category }}</h2>
+        <ul>
+            {% for item, price in items.items() %}
+                <li>
+                    {{ item }} — Rs {{ price }}
+                    <a href="/add/{{ item }}">Add to Cart</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+
+    <br>
+    <a href="/cart">🛒 View Cart</a>
+</body>
+</html>
